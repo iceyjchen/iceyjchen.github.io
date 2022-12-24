@@ -16,22 +16,35 @@
   <meta name="author" content="ICEY_">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基于Anaconda环境 安装 python2 conda create -n conda_python2.7 python&#x3D;2.7 激活 python2 conda activate conda_python2.7 python2 安装 jupyter kernel python -m pip install ipykernel python -m ipykernel install --use">
+    <meta name="description" content="数据挖掘-基础定义数据挖掘是从大量的、不完全的、有噪声的、模糊的、随机的数据中提取隐含在其中的、人们事先不知道的、但又是潜在有用的信息和知识的过程。 数据数据集定义由数据对象组成，一个数据对象代表一个实体；属性为数据对象的特征或功能 如数据库中的行为数据对象，列为其属性。  属性的类型  标称：类别、状态等，如颜色、职业、身份证号等 二进制：分为对称（性别）和不对称（医疗测试）结果 序数：有意义的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jupyter 添加 Python2 环境">
-<meta property="og:url" content="https://iceyjchen.github.io/2022/12/22/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/Jupyter%E6%B7%BB%E5%8A%A0Python2%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:title" content="post">
+<meta property="og:url" content="https://iceyjchen.github.io/2022/12/24/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="ICEY">
-<meta property="og:description" content="基于Anaconda环境 安装 python2 conda create -n conda_python2.7 python&#x3D;2.7 激活 python2 conda activate conda_python2.7 python2 安装 jupyter kernel python -m pip install ipykernel python -m ipykernel install --use">
+<meta property="og:description" content="数据挖掘-基础定义数据挖掘是从大量的、不完全的、有噪声的、模糊的、随机的数据中提取隐含在其中的、人们事先不知道的、但又是潜在有用的信息和知识的过程。 数据数据集定义由数据对象组成，一个数据对象代表一个实体；属性为数据对象的特征或功能 如数据库中的行为数据对象，列为其属性。  属性的类型  标称：类别、状态等，如颜色、职业、身份证号等 二进制：分为对称（性别）和不对称（医疗测试）结果 序数：有意义的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-22T03:13:54.000Z">
-<meta property="article:modified_time" content="2022-12-22T03:23:16.815Z">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224174256465.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224155903586.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224161853851.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224162038715.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224162153307.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224162252138.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224164421761.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224164441059.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224165925457.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224165308333.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224170825388.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224173238439.png">
+<meta property="og:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224174015745.png">
+<meta property="article:published_time" content="2022-12-24T09:41:43.000Z">
+<meta property="article:modified_time" content="2022-12-24T09:51:01.580Z">
 <meta property="article:author" content="ICEY_">
-<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://iceyjchen.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224174256465.png">
   
   
   
-  <title>Jupyter 添加 Python2 环境 - ICEY</title>
+  <title>post - ICEY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Jupyter 添加 Python2 环境"></span>
+            <span id="subtitle" data-typed-text="post"></span>
           
         </div>
 
@@ -224,8 +237,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-22 11:13" pubdate>
-          2022年12月22日 上午
+        <time datetime="2022-12-24 17:41" pubdate>
+          2022年12月24日 下午
         </time>
       </span>
     
@@ -236,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          175 字
+          1.5k 字
         
       </span>
     
@@ -247,7 +260,7 @@
         
         
         
-          2 分钟
+          13 分钟
         
       </span>
     
@@ -293,12 +306,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Jupyter 添加 Python2 环境</h1>
+            <h1 style="display: none">post</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年12月22日 上午
+                    本文最后更新于：2022年12月24日 下午
                   
                 
               </p>
@@ -306,13 +319,75 @@
             
               <div class="markdown-body">
                 
-                <p>基于Anaconda环境</p>
-<p>安装 python2</p>
-<p><code>conda create -n conda_python2.7 python=2.7</code></p>
-<p>激活 python2</p>
-<p><code>conda activate conda_python2.7</code></p>
-<p>python2 安装 jupyter kernel</p>
-<p><code>python -m pip install ipykernel</code><br> <code>python -m ipykernel install --user</code></p>
+                <h1 id="数据挖掘-基础"><a href="#数据挖掘-基础" class="headerlink" title="数据挖掘-基础"></a>数据挖掘-基础</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>数据挖掘是从大量的、不完全的、有噪声的、模糊的、随机的数据中提取隐含在其中的、人们事先不知道的、但又是潜在有用的信息和知识的过程。</p>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><h3 id="数据集定义"><a href="#数据集定义" class="headerlink" title="数据集定义"></a>数据集定义</h3><p>由数据对象组成，一个数据对象代表一个实体；属性为数据对象的特征或功能</p>
+<p>如数据库中的行为数据对象，列为其属性。 </p>
+<p>属性的类型</p>
+<ul>
+<li>标称：类别、状态等，如颜色、职业、身份证号等</li>
+<li>二进制：分为对称（性别）和不对称（医疗测试）结果</li>
+<li>序数：有意义的排序但不知道连续值之间的大小</li>
+<li>区间：以单位长度顺序性度量；值有序；不存在0点，倍数无意义；如1000年与2000年不存在倍数关系</li>
+<li>比率：具有固定0点的数值属性，有序且可以倍数计算</li>
+</ul>
+<p><img src="/./%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224174256465.png" srcset="/img/loading.gif" lazyload alt="image-20221224174256465"></p>
+<h3 id="常见数据统计特性"><a href="#常见数据统计特性" class="headerlink" title="常见数据统计特性"></a><strong>常见数据统计特性</strong></h3><p>最大值、最小值、中位数、位数、离群值、方差等</p>
+<p><strong>中性化趋势度量</strong></p>
+<p>均值(mean)、中位数(median) 和众数</p>
+<p>经验公式 $mean-mode &#x3D; 3x(mean-median)$</p>
+<p><strong>分布趋势度量</strong></p>
+<p>方差和标准差；</p>
+<p>分位数</p>
+<ul>
+<li><p>四分位数</p>
+<p>Q1、Q3</p>
+<p>极差：IQR &#x3D; Q3 - Q1</p>
+</li>
+<li><p>五分位数</p>
+<p>min、Q1、median、Q3、max</p>
+<p>其中min &#x3D; Q1-1.5xIQR</p>
+<p>max &#x3D; Q3+1.5xIQR</p>
+</li>
+</ul>
+<p>离群点：高于或低于1.5xIQR的值</p>
+<p>箱线图：和五分位数一样，单独添加离群点；（一般数据挖掘时删除离群点）</p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224155903586.png" srcset="/img/loading.gif" lazyload alt="image-20221224155903586"></p>
+<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><p>箱线图：分析多个属性数据的离散度差异性</p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224161853851.png" srcset="/img/loading.gif" lazyload alt="image-20221224161853851"></p>
+<p>直方图：分析单个属性在各个区间变化分布</p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224162038715.png" srcset="/img/loading.gif" lazyload alt="image-20221224162038715"></p>
+<p>散点图：显示两组数据大的相关性分布</p>
+<p>相关性有正相关、负相关、不相关</p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224162153307.png" srcset="/img/loading.gif" lazyload alt="image-20221224162153307"></p>
+<p>房价相关性</p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224162252138.png" srcset="/img/loading.gif" lazyload alt="image-20221224162252138"></p>
+<h2 id="数据相似度"><a href="#数据相似度" class="headerlink" title="数据相似度"></a>数据相似度</h2><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>数据矩阵：N个数据、P个维度</p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224164421761.png" srcset="/img/loading.gif" lazyload alt="image-20221224164421761"></p>
+<p>相异矩阵：N个数据点，记录两点之间的距离</p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224164441059.png" srcset="/img/loading.gif" lazyload alt="image-20221224164441059"></p>
+<p>相似度：度量两个数据对象的相似程度，范围[0,1]</p>
+<p>相异度：独享两个数据对象的差别程度，值越小越相似，最小为0</p>
+<p>邻近性：相似度或相异度</p>
+<h4 id="差异性度量"><a href="#差异性度量" class="headerlink" title="差异性度量"></a><strong>差异性度量</strong></h4><p><strong>标称属性</strong></p>
+<p>可以取两个或多个状态</p>
+<p>方法：简单匹配</p>
+<p>m:匹配次数，p:属性总数<br>$$<br>d(i,j)&#x3D;\frac{p-m}{p}<br>$$<br><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224165925457.png" srcset="/img/loading.gif" lazyload alt="image-20221224165925457"></p>
+<p><strong>二进制属性</strong></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224165308333.png" srcset="/img/loading.gif" lazyload alt="image-20221224165308333"></p>
+<p>距离度量对称的二值变量：<br>$$<br>d(i,j)&#x3D; \frac{r+s}{q+r+s+t}<br>$$<br>距离度量非对称的二值变量(更加关心异常数据，因此取消t)：</p>
+<p>$$<br>d(i,j)&#x3D; \frac{r+s}{q+r+s} \</p>
+<p>Jaccard系数： si m_{Jaccard}(i,j) &#x3D; \frac{q}{q+r+s}<br>$$<br><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224170825388.png" srcset="/img/loading.gif" lazyload alt="image-20221224170825388"></p>
+<p><strong>数值属性</strong></p>
+<p>闵可夫斯基距离：<br>$$<br>d(i, j)&#x3D;\sqrt[h]{\left|x_{i 1}-x_{j 1}\right|^{h}+\left|x_{i 2}-x_{j 2}\right|^{h}+\cdots+\left|x_{i p}-x_{j p}\right|^{h}}<br>$$</p>
+<ul>
+<li>$d(i,j)&gt;0\ if\ i\ne j, and\ d(i, i)&#x3D;0$（正定性）</li>
+<li>$d(i,j)&#x3D;d(j,i)$（对称性）</li>
+<li>$d(i,j)\le d(i,k)+d(k,j)$（三角不等性）</li>
+</ul>
+<p>当h&#x3D;1时，为曼哈顿距离</p>
+<p>当h&#x3D;2时，为欧氏距离</p>
+<p>当$h\to\infty$时，为上确界距离(取最大距离)<br>$$<br>d(i, j)&#x3D;\lim <em>{h \rightarrow \infty}\left(\sum</em>{f&#x3D;1}^{p}\left|x_{i f}-x_{j f}\right|^{h}\right)^{\frac{1}{h}}&#x3D;\max <em>{f}^{p}\left|x</em>{i f}-x_{j f}\right|<br>$$<br><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224173238439.png" srcset="/img/loading.gif" lazyload alt="image-20221224173238439"></p>
+<h4 id="余弦相似性"><a href="#余弦相似性" class="headerlink" title="余弦相似性"></a>余弦相似性</h4><p>计算向量之间的差异程度（如向量化的文档）<br>$$<br>cos(d1, d2) &#x3D;  (d1 * d2) &#x2F; ||d1||\ ||d2||<br>$$<br><img src="/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/image-20221224174015745.png" srcset="/img/loading.gif" lazyload alt="image-20221224174015745"></p>
 
                 
               </div>
@@ -321,34 +396,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">环境配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Python/">#Python</a>
-      
-    </div>
   
 </div>
 
@@ -358,8 +405,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Jupyter 添加 Python2 环境</div>
-      <div>https://iceyjchen.github.io/2022/12/22/环境配置/Jupyter添加Python2环境/</div>
+      <div>post</div>
+      <div>https://iceyjchen.github.io/2022/12/24/数据挖掘/数据挖掘-基础/</div>
     </div>
     <div class="license-meta">
       
@@ -371,7 +418,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月22日</div>
+          <div>2022年12月24日</div>
         </div>
       
       
@@ -415,15 +462,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/24/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/" title="post">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">post</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/12/22/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/Jupyter%E6%B7%BB%E5%8A%A0Python2%E7%8E%AF%E5%A2%83/" title="Jupyter 添加 Python2 环境">
+                        <span class="hidden-mobile">Jupyter 添加 Python2 环境</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
