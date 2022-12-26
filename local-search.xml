@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>数据挖掘-朴素贝叶斯分类</title>
+    <link href="/2022/12/26/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/"/>
+    <url>/2022/12/26/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/</url>
+    
+    <content type="html"><![CDATA[<h1 id="朴素贝叶斯分类"><a href="#朴素贝叶斯分类" class="headerlink" title="朴素贝叶斯分类"></a>朴素贝叶斯分类</h1><p><strong>分类</strong></p><p>找出描述和区分数据类或概念的<strong>模型</strong>，以便能够使用模型<strong>预测类标号未知的对象的类标号</strong></p><p><strong>过程</strong></p><ul><li><p>学习阶段</p><ul><li>建立描述预先定义的数据类或概念集的<strong>分类器</strong></li><li><strong>训练集</strong>提供了每个训练元组的类标号，分类的学习过程也称为监督学习</li></ul></li><li><p>分类阶段</p><p>使用定义好的分类器进行分类的过程</p></li></ul><h2 id="朴素贝叶斯分类-1"><a href="#朴素贝叶斯分类-1" class="headerlink" title="朴素贝叶斯分类"></a>朴素贝叶斯分类</h2><p>后验概率计算<br>$$<br>P(h|D)&#x3D;\frac{P(D|h)P(h)}{P(D)}<br>$$</p><div align="center"><img src="/2022/12/26/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/image-20221226172841846.png" alt="image-20221226172841846" style="zoom: 67%;"></div><p>对于不能直接观察到的部分，往往会提出假设。而对于不确定的事物，往往会有多个假设。</p><div align="center"><img src="/2022/12/26/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/image-20221226173429682.png" alt="image-20221226173429682" style="zoom:50%;"></div><p><strong>极大后验假设</strong>(MAP)：学习器在候选假设集合H中寻找给定数据*<em>D</em>***时可能性最大的假设h，h被称为极大后验假设</p><p>计算方法：用贝叶斯公式计算每个候选假设的后验概率<br>$$<br>ℎ_{𝑀𝐴𝑃}&#x3D;\underset{ℎ∈𝐻}{max}⁡\ 𝑃(ℎ|&lt;𝑎_1,𝑎_2,…,𝑎_𝑛&gt;)\<br>        &#x3D;\underset{ℎ∈𝐻}{max}\ ⁡𝑃(&lt;𝑎_1,𝑎_2,…,𝑎_𝑛&gt;|ℎ)𝑃(ℎ)<br>$$<br>问题：当维度过高时，计算开销大</p><p><strong>解决方法</strong></p><ul><li><p>假设D的属性$a_i$之间相互&#x3D;&#x3D;独立同分布&#x3D;&#x3D;</p><p>$⁡𝑃(&lt;𝑎<em>1,𝑎_2,…,𝑎_𝑛&gt;|ℎ)&#x3D;\prod</em>{i}P(a_i|h)$</p></li><li><p>$$<br>ℎ_{𝑀𝐴𝑃}&#x3D;\underset{ℎ∈𝐻}{max}⁡\ 𝑃(ℎ|&lt;𝑎<em>1,𝑎_2,…,𝑎_𝑛&gt;)\<br>    &#x3D;\underset{ℎ∈𝐻}{max}\ ⁡𝑃(&lt;𝑎_1,𝑎_2,…,𝑎_𝑛&gt;|ℎ)𝑃(ℎ)\ &#x3D;\underset{ℎ∈𝐻}{max}\prod</em>{i}P(a_i|h)p(h)<br>$$</p></li></ul><p>如果D的属性之间不满足相互独立，朴素贝叶斯分类的结果是贝叶斯分类的近似</p><p>相关性的数据需要先降低相关维度，然后使用贝叶斯分类</p><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><table><thead><tr><th><strong>id</strong></th><th><strong>年龄</strong></th><th><strong>收入</strong></th><th><strong>爱好</strong></th><th><strong>信用</strong></th><th><strong>购买</strong></th></tr></thead><tbody><tr><td>1</td><td>青</td><td>高</td><td>否</td><td>中</td><td>否</td></tr><tr><td>2</td><td>青</td><td>高</td><td>否</td><td>优</td><td>否</td></tr><tr><td>3</td><td>中</td><td>高</td><td>否</td><td>中</td><td>是</td></tr><tr><td>4</td><td>老</td><td>中</td><td>否</td><td>中</td><td>是</td></tr><tr><td>5</td><td>老</td><td>低</td><td>是</td><td>中</td><td>是</td></tr><tr><td>6</td><td>老</td><td>低</td><td>是</td><td>优</td><td>否</td></tr><tr><td>7</td><td>中</td><td>低</td><td>是</td><td>优</td><td>是</td></tr><tr><td>8</td><td>青</td><td>中</td><td>否</td><td>中</td><td>否</td></tr><tr><td>9</td><td>青</td><td>低</td><td>是</td><td>中</td><td>是</td></tr><tr><td>10</td><td>老</td><td>中</td><td>是</td><td>中</td><td>是</td></tr><tr><td>11</td><td>青</td><td>中</td><td>是</td><td>优</td><td>是</td></tr><tr><td>12</td><td>中</td><td>中</td><td>否</td><td>优</td><td>是</td></tr><tr><td>13</td><td>中</td><td>高</td><td>是</td><td>中</td><td>是</td></tr><tr><td>14</td><td>老</td><td>中</td><td>否</td><td>优</td><td>否</td></tr></tbody></table><p>求收入中等、信用度良好的青年爱好游戏顾客是否会购买电脑？</p><ul><li><p>购买电脑的情况</p><p>P(青年|购买) &#x3D; 2&#x2F;9 &#x3D; 0.222</p><p>P(收入中等|购买) &#x3D; 4&#x2F;9 &#x3D; 0.444</p><p>P(爱好|购买) &#x3D; 6&#x2F;9 &#x3D; 0.667</p><p>P(信用中|购买) &#x3D;6&#x2F;9 &#x3D; 0.667 </p><p>P(X|购买) &#x3D; 0.222×0.444×0.667×0.667&#x3D;0.044（独立同分布）</p></li><li><p>不买电脑的情况</p></li></ul><p>​同理得P(X|不买) &#x3D;0.6 ×0.4 ×0.2 ×0.4&#x3D;0.019 </p><ul><li><p>MAP计算</p><p>P(买)&#x3D;9&#x2F;14&#x3D;0.643</p><p>P(不买)&#x3D;5&#x2F;14&#x3D;0.357</p><p>P(购买|X) &#x3D; P(X|购买)P(买) &#x3D; 0.044×0.643&#x3D;0.028 </p><p>P(不买|X) &#x3D; P(X|不买)P(不买) &#x3D; 0.019 ×0.357&#x3D;0.007</p></li></ul><p><strong>连续变量</strong></p><table><thead><tr><th><strong>id</strong></th><th><strong>年龄</strong></th><th><strong>收入</strong></th><th><strong>爱好</strong></th><th><strong>信用</strong></th><th><strong>购买</strong></th></tr></thead><tbody><tr><td>1</td><td>青</td><td>高</td><td>否</td><td>中</td><td>否</td></tr><tr><td>2</td><td>青</td><td>高</td><td>否</td><td>优</td><td>否</td></tr><tr><td>3</td><td>中</td><td>低</td><td>否</td><td>中</td><td>否</td></tr><tr><td>4</td><td>老</td><td>高</td><td>否</td><td>中</td><td>否</td></tr><tr><td>5</td><td>老</td><td>中</td><td>是</td><td>中</td><td>是</td></tr><tr><td>6</td><td>老</td><td>低</td><td>是</td><td>优</td><td>否</td></tr><tr><td>7</td><td>中</td><td>高</td><td>是</td><td>优</td><td>否</td></tr><tr><td>8</td><td>青</td><td>中</td><td>否</td><td>中</td><td>是</td></tr><tr><td>9</td><td>青</td><td>低</td><td>是</td><td>中</td><td>否</td></tr><tr><td>10</td><td>老</td><td>中</td><td>是</td><td>中</td><td>是</td></tr></tbody></table><p>上表中收入为连续变量，预测收入为121，无游戏爱好、信用良好的中年人，是否购买</p><p>方法一：使用离散化后计算</p><p>方法二：假设不同类别收入分别服从不同正态分布(现实中大部分符合)<br>$$<br>P\left(X_{i} \mid c_{j}\right)&#x3D;\frac{1}{\sqrt{2 \pi \sigma_{i j}^{2}}} e^{\frac{\left(x_{i}-\mu_{i j}\right)^{2}}{2 \sigma_{i j}^{2}}}<br>$$</p><p>$$<br>P(\text {收入}&#x3D;121 \mid No)&#x3D;\frac{1}{\sqrt{2 \pi}(54.54)} e^{-\frac{(121-110)^{2}}{2(2975)}} \<br>$$</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>机器学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据挖掘</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数据挖掘-数据预处理</title>
     <link href="/2022/12/25/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
     <url>/2022/12/25/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/</url>
