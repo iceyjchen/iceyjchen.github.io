@@ -16,22 +16,30 @@
   <meta name="author" content="ICEY_">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基于Anaconda环境 安装 python2 conda create -n conda_python2.7 python&#x3D;2.7 激活 python2 conda activate conda_python2.7 python2 安装 jupyter kernel python -m pip install ipykernel python -m ipykernel install --use">
+    <meta name="description" content="数据挖掘-逻辑回归logistic函数：$$f(x)&#x3D;\frac{e^{x}}{1+e^{x}}$$用$p_i&#x3D;P(y_i&#x3D;1|x_{i1},x_{i2},…,x_{ip})$作为因变量，得到logistic回归模型：$$\begin{array}{c}p_{i}&#x3D;\frac{\exp \left(\alpha+\beta_{1} x_{i 1}+\beta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jupyter 添加 Python2 环境">
-<meta property="og:url" content="https://iceyjchen.github.io/2022/12/22/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/Jupyter%E6%B7%BB%E5%8A%A0Python2%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:title" content="数据挖掘-逻辑回归">
+<meta property="og:url" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/index.html">
 <meta property="og:site_name" content="ICEY">
-<meta property="og:description" content="基于Anaconda环境 安装 python2 conda create -n conda_python2.7 python&#x3D;2.7 激活 python2 conda activate conda_python2.7 python2 安装 jupyter kernel python -m pip install ipykernel python -m ipykernel install --use">
+<meta property="og:description" content="数据挖掘-逻辑回归logistic函数：$$f(x)&#x3D;\frac{e^{x}}{1+e^{x}}$$用$p_i&#x3D;P(y_i&#x3D;1|x_{i1},x_{i2},…,x_{ip})$作为因变量，得到logistic回归模型：$$\begin{array}{c}p_{i}&#x3D;\frac{\exp \left(\alpha+\beta_{1} x_{i 1}+\beta">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-22T03:13:54.000Z">
-<meta property="article:modified_time" content="2022-12-22T03:23:16.815Z">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227140505231.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227140845798.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227141351731.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227142814920.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227145018856.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227144205423.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227144649554.png">
+<meta property="article:published_time" content="2022-12-27T15:13:10.000Z">
+<meta property="article:modified_time" content="2022-12-27T15:15:33.159Z">
 <meta property="article:author" content="ICEY_">
-<meta property="article:tag" content="Python">
+<meta property="article:tag" content="数据挖掘">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227140505231.png">
   
   
   
-  <title>Jupyter 添加 Python2 环境 - ICEY</title>
+  <title>数据挖掘-逻辑回归 - ICEY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -42,6 +50,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -217,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Jupyter 添加 Python2 环境"></span>
+            <span id="subtitle" data-typed-text="数据挖掘-逻辑回归"></span>
           
         </div>
 
@@ -228,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-22 11:13" pubdate>
-          2022年12月22日 上午
+        <time datetime="2022-12-27 23:13" pubdate>
+          2022年12月27日 晚上
         </time>
       </span>
     
@@ -240,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          175 字
+          2.4k 字
         
       </span>
     
@@ -251,7 +261,7 @@
         
         
         
-          2 分钟
+          21 分钟
         
       </span>
     
@@ -297,12 +307,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Jupyter 添加 Python2 环境</h1>
+            <h1 style="display: none">数据挖掘-逻辑回归</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年12月22日 上午
+                    本文最后更新于：2022年12月27日 晚上
                   
                 
               </p>
@@ -310,13 +320,135 @@
             
               <div class="markdown-body">
                 
-                <p>基于Anaconda环境</p>
-<p>安装 python2</p>
-<p><code>conda create -n conda_python2.7 python=2.7</code></p>
-<p>激活 python2</p>
-<p><code>conda activate conda_python2.7</code></p>
-<p>python2 安装 jupyter kernel</p>
-<p><code>python -m pip install ipykernel</code><br> <code>python -m ipykernel install --user</code></p>
+                <h1 id="数据挖掘-逻辑回归"><a href="#数据挖掘-逻辑回归" class="headerlink" title="数据挖掘-逻辑回归"></a>数据挖掘-逻辑回归</h1><p>logistic函数：<br>$$<br>f(x)&#x3D;\frac{e^{x}}{1+e^{x}}<br>$$<br>用$p_i&#x3D;P(y_i&#x3D;1|x_{i1},x_{i2},…,x_{ip})$作为因变量，得到logistic回归模型：<br>$$<br>\begin{array}{c}<br>p_{i}&#x3D;\frac{\exp \left(\alpha+\beta_{1} x_{i 1}+\beta_{2} x_{i 2}+\cdots+\beta_{p} x_{i p}\right)}{1+\exp \left(\alpha+\beta_{1} x_{i 1}+\beta_{2} x_{i 2}+\cdots+\beta_{p} x_{i p}\right)} \<br>\ln \frac{p_{i}}{1-p_{i}}&#x3D;\alpha+\beta_{1} x_{i 1}+\beta_{2} x_{i 2}+\cdots+\beta_{p} x_{i p}<br>\end{array}<br>$$<br>特点：线性分类器</p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227140505231.png" srcset="/img/loading.gif" lazyload alt="image-20221227140505231" style="zoom:50%;">
+
+<p>Logit（logisticprobability unit）变换：</p>
+<p>令$Logit(p_i)&#x3D;\frac{p_i}{1-p_i}$</p>
+<p>有$Logit(p_i)&#x3D;\alpha+\beta_{1} x_{i 1}+\beta_{2} x_{i 2}+\cdots+\beta_{p} x_{i p}+\varepsilon_i$</p>
+<p>变换特点：</p>
+<ul>
+<li>$Logit(p_i)&#x3D;\frac{p_i}{1-p_i} \in (0,+\infty)：正类$</li>
+<li>$Logit(p_i)&#x3D;\frac{p_i}{1-p_i} \in (-\infty,0)：负类$</li>
+</ul>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227140845798.png" srcset="/img/loading.gif" lazyload alt="image-20221227140845798">
+
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227141351731.png" srcset="/img/loading.gif" lazyload alt="image-20221227141351731" style="zoom:50%;">
+
+<p>应用：<strong>优势比OR</strong></p>
+<p>流行病学衡量危险因素作用大小的<strong>比数比例</strong>指标<br>$$<br>𝑂𝑅_𝑗&#x3D;\frac{𝑃_1&#x2F;(1−𝑃_1)}{𝑃_0&#x2F;(1−𝑃_0)} \<br>P_1和P_0分别表示在X_j取值为c_1及c_0时的发病概率，OR_j称作多变量调整后的优势比，表示扣除了其他自变量影响后危险因素的作用<br>$$<br>表示自变量变化以后，发病概率的变化情况</p>
+<p>对比某一危险因素两个不同暴露水平 $x_j&#x3D;c_1与x_j&#x3D;c_0 $的发病情况（假定其它因素的水平相同），其优势比的自然对数为<br>$$<br>\begin{array}{l}<br>\ln O R_{j}&#x3D;\ln \left[\frac{P_{1} &#x2F;\left(1-P_{1}\right)}{P_{0} &#x2F;\left(1-P_{0}\right)}\right]&#x3D;\operatorname{logit} P_{1}-\operatorname{logit} P_{0} \<br>&#x3D;\left(\beta_{0}+\beta_{j} c_{1}+\sum_{t \neq j}^{m} \beta_{t} X_{t}\right)-\left(\beta_{0}+\beta_{j} c_{0}+\sum_{t \neq j}^{m} \beta_{t} X_{t}\right) \<br>&#x3D;\beta_{j}\left(c_{1}-c_{0}\right)<br>\end{array}<br>$$<br>即<br>$$<br>OR_j &#x3D; exp[\beta_j(c_1-c_0)]，\<br>若  X_{j}&#x3D;\left{\begin{array}{lll}1 &amp; \text { 暴露 } \ 0 &amp; \text { 非暴露 }，\end{array}\right. \<br>c_{1}-c_{0}&#x3D;1,\<br>则有  O R_{j} &#x3D;\exp \beta_{j}, \quad \beta_{j}\left{\begin{array}{l}<br>&#x3D;0, O R_{j}&#x3D;1 \text { 无作用 } \</p>
+<blockquote>
+<p>0, O R_{j}&gt;1 \text { 危险因子 } \<br>&lt;0, O R_{j}&lt;1 \text { 保护因子 }<br>\end{array}\right.<br>$$</p>
+</blockquote>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227142814920.png" srcset="/img/loading.gif" lazyload class title="image-20221227142814920">
+
+<p>说明收入对工作状态有正关系，收入越高，工作概率越高</p>
+<p><strong>逻辑回归应用</strong></p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227145018856.png" srcset="/img/loading.gif" lazyload class title="image-20221227145018856">
+
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>$w_1x_1+w_2x_2 +w_0 &#x3D;0$对应于平面的一根直线</p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227144205423.png" srcset="/img/loading.gif" lazyload alt="image-20221227144205423" style="zoom:50%;">
+
+<p>w在数值上越小越好，这样越能抵抗数据的扰动</p>
+<p>误差函数<br>$$<br>E&#x3D;\sum_{i&#x3D;1}^{n}\left(y_{i}-\frac{1}{1+e^{-\left(w_{1} x_{i 1}+w_{2} x_{i 2}+w_{0}\right)}}\right)^{2}+\lambda L_{i} \<br>L_1 &#x3D; \sum_{i&#x3D;0}^{m}|w_i| \<br>L_2 &#x3D; \sum_{i&#x3D;0}^{m}w_i^2<br>$$<br>最小化E值使得求解的权值尽可能相对较小</p>
+<p>数据挖掘中，</p>
+<ul>
+<li>$L_1$倾向于使得w要么取1，要么取0<strong>稀疏编码</strong>(交集在坐标轴上)，适合降维</li>
+<li>$L_2$倾向于使得w整体偏小<strong>岭回归</strong></li>
+</ul>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/image-20221227144649554.png" srcset="/img/loading.gif" lazyload alt="image-20221227144649554" style="zoom:50%;">
+
+<h2 id="数值优化"><a href="#数值优化" class="headerlink" title="数值优化"></a>数值优化</h2><p>各个维度的输入如果在数值上差异很大，那么会引起正确的w在各个维度上数值差异很大</p>
+<p>找寻w的时候，对各个维度的调整基本上是按照同一个数量级来进行调整</p>
+<table>
+<thead>
+<tr>
+<th><strong>老虎数量</strong></th>
+<th><strong>麻雀数量</strong></th>
+<th><strong>是否污染</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>50640</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>55640</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>62020</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>54642</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>如上表中数量差距过大，通过规范化进行统计到同一个数量级，如Z得分规范</p>
+<table>
+<thead>
+<tr>
+<th><strong>老虎数量</strong></th>
+<th><strong>麻雀数量</strong></th>
+<th><strong>是否污染</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>50640</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>55640</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>62020</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>54642</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>逻辑回归的优化方法</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>数值归一化</strong></th>
+<th><strong>正则化</strong></th>
+<th><strong>梯度下降法</strong></th>
+<th><strong>分类个数</strong></th>
+<th><strong>数据选择</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LogisticR egression   WithLBF GS</td>
+<td>需要均值归一化，算法融入方差归一化</td>
+<td>支持L2</td>
+<td>LBFGS  （收敛快，考虑二阶导数）</td>
+<td>支持多分类</td>
+<td>加载所有数据  都参与训练</td>
+</tr>
+<tr>
+<td><em>LogisticR egression   WithSGD</em></td>
+<td>不归一化，需要专门在外面进行归一化</td>
+<td>支持L1，  L2</td>
+<td>SGD</td>
+<td>不支持多分类</td>
+<td>随机从训练集选取（支持 MiniBatch Fraction）</td>
+</tr>
+</tbody></table>
 
                 
               </div>
@@ -335,7 +467,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">环境配置</a>
+  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
   
   
 
@@ -350,7 +482,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Python/">#Python</a>
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">#数据挖掘</a>
       
     </div>
   
@@ -362,8 +494,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Jupyter 添加 Python2 环境</div>
-      <div>https://iceyjchen.github.io/2022/12/22/环境配置/Jupyter添加Python2环境/</div>
+      <div>数据挖掘-逻辑回归</div>
+      <div>https://iceyjchen.github.io/2022/12/27/数据挖掘/数据挖掘-逻辑回归/</div>
     </div>
     <div class="license-meta">
       
@@ -375,7 +507,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月22日</div>
+          <div>2022年12月27日</div>
         </div>
       
       
@@ -419,15 +551,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/24/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/" title="数据挖掘-基础">
+                      <a href="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/" title="数据挖掘- K均值聚类">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据挖掘-基础</span>
+                        <span class="hidden-mobile">数据挖掘- K均值聚类</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/12/26/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/" title="数据挖掘-朴素贝叶斯分类">
+                        <span class="hidden-mobile">数据挖掘-朴素贝叶斯分类</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -506,6 +644,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

@@ -16,22 +16,31 @@
   <meta name="author" content="ICEY_">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基于Anaconda环境 安装 python2 conda create -n conda_python2.7 python&#x3D;2.7 激活 python2 conda activate conda_python2.7 python2 安装 jupyter kernel python -m pip install ipykernel python -m ipykernel install --use">
+    <meta name="description" content="数据挖掘- K均值聚类把数据对象集合按照相似性划分成多个子集的过程。 每个子集是一个簇（cluster），使得簇中的对象彼此相似，但与其他簇中的对象不相似。 聚类是无监督学习   划分方法：将有n 个对象的数据集D划分成k个簇，并且k≤n，满足如下的要求：  每个簇至少包含一个对象  每个对象属于且仅属于一个簇   基本思想  首先创建一个初始k划分( k为要构造的划分数)  然后不断迭代地计算各">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jupyter 添加 Python2 环境">
-<meta property="og:url" content="https://iceyjchen.github.io/2022/12/22/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/Jupyter%E6%B7%BB%E5%8A%A0Python2%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:title" content="数据挖掘- K均值聚类">
+<meta property="og:url" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/index.html">
 <meta property="og:site_name" content="ICEY">
-<meta property="og:description" content="基于Anaconda环境 安装 python2 conda create -n conda_python2.7 python&#x3D;2.7 激活 python2 conda activate conda_python2.7 python2 安装 jupyter kernel python -m pip install ipykernel python -m ipykernel install --use">
+<meta property="og:description" content="数据挖掘- K均值聚类把数据对象集合按照相似性划分成多个子集的过程。 每个子集是一个簇（cluster），使得簇中的对象彼此相似，但与其他簇中的对象不相似。 聚类是无监督学习   划分方法：将有n 个对象的数据集D划分成k个簇，并且k≤n，满足如下的要求：  每个簇至少包含一个对象  每个对象属于且仅属于一个簇   基本思想  首先创建一个初始k划分( k为要构造的划分数)  然后不断迭代地计算各">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-22T03:13:54.000Z">
-<meta property="article:modified_time" content="2022-12-22T03:23:16.815Z">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227104918862.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227105703045.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227110617977.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227112252911.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227112703718.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227113141944.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227113153911.png">
+<meta property="og:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227113745023.png">
+<meta property="article:published_time" content="2022-12-27T15:16:40.000Z">
+<meta property="article:modified_time" content="2022-12-27T15:26:07.492Z">
 <meta property="article:author" content="ICEY_">
-<meta property="article:tag" content="Python">
+<meta property="article:tag" content="数据挖掘">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://iceyjchen.github.io/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227104918862.png">
   
   
   
-  <title>Jupyter 添加 Python2 环境 - ICEY</title>
+  <title>数据挖掘- K均值聚类 - ICEY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -42,6 +51,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -217,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Jupyter 添加 Python2 环境"></span>
+            <span id="subtitle" data-typed-text="数据挖掘- K均值聚类"></span>
           
         </div>
 
@@ -228,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-22 11:13" pubdate>
-          2022年12月22日 上午
+        <time datetime="2022-12-27 23:16" pubdate>
+          2022年12月27日 晚上
         </time>
       </span>
     
@@ -240,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          175 字
+          2.3k 字
         
       </span>
     
@@ -251,7 +262,7 @@
         
         
         
-          2 分钟
+          19 分钟
         
       </span>
     
@@ -297,12 +308,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Jupyter 添加 Python2 环境</h1>
+            <h1 style="display: none">数据挖掘- K均值聚类</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年12月22日 上午
+                    本文最后更新于：2022年12月27日 晚上
                   
                 
               </p>
@@ -310,13 +321,164 @@
             
               <div class="markdown-body">
                 
-                <p>基于Anaconda环境</p>
-<p>安装 python2</p>
-<p><code>conda create -n conda_python2.7 python=2.7</code></p>
-<p>激活 python2</p>
-<p><code>conda activate conda_python2.7</code></p>
-<p>python2 安装 jupyter kernel</p>
-<p><code>python -m pip install ipykernel</code><br> <code>python -m ipykernel install --user</code></p>
+                <h1 id="数据挖掘-K均值聚类"><a href="#数据挖掘-K均值聚类" class="headerlink" title="数据挖掘- K均值聚类"></a>数据挖掘- K均值聚类</h1><p>把数据对象集合按照相似性划分成多个子集的过程。</p>
+<p>每个子集是一个簇（cluster），使得簇中的对象彼此相似，但与其他簇中的对象不相似。</p>
+<p>聚类是无监督学习</p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227104918862.png" srcset="/img/loading.gif" lazyload class title="image-20221227104918862">
+
+<p><strong>划分方法</strong>：将有n 个对象的数据集D划分成k个簇，并且k≤n，满足如下的要求：</p>
+<ul>
+<li><p>每个簇至少包含一个对象</p>
+</li>
+<li><p>每个对象属于且仅属于一个簇</p>
+</li>
+</ul>
+<p><strong>基本思想</strong></p>
+<ul>
+<li><p>首先创建一个初始k划分( k为要构造的划分数)</p>
+</li>
+<li><p>然后不断迭代地计算各个簇的聚类中心并依新的聚类中心调整聚类情况，直至收敛</p>
+</li>
+</ul>
+<p>目标</p>
+<ul>
+<li><p>同一个簇中的对象之间尽可能“接近”或相关</p>
+</li>
+<li><p>不同簇中的对象之间尽可能“远离”或不同</p>
+</li>
+</ul>
+<p><strong>启发式方法</strong><br>$$<br>E&#x3D;\sum_{i&#x3D;1}^{k} \Sigma_{p \in C_{i}}\left(d\left(p, c_{i}\right)\right)^{2}<br>$$<br>k-均值(k-means)</p>
+<ul>
+<li>每个簇用该簇中对象的均值来表示</li>
+<li>基于质心的技术</li>
+</ul>
+<p>k-中心点(k-medoids)</p>
+<ul>
+<li>每个簇用接近簇中心的一个对象来表示</li>
+<li>基于代表对象的技术</li>
+</ul>
+<p><strong>适用性</strong></p>
+<ul>
+<li>这些启发式算法适合发现中小规模数据库中的<strong>球状</strong>聚类</li>
+<li>对于大规模数据库和处理任意形状的聚类，这些算法需要进一步扩展</li>
+</ul>
+<h2 id="k-均值-k-means"><a href="#k-均值-k-means" class="headerlink" title="k-均值(k-means)"></a>k-均值(k-means)</h2><ol>
+<li>$从数据集中随机取K个样本作为初始的聚类中心C&#x3D;{c_1,c_2,…,c_k}$</li>
+<li>$针对数据集中每个样本x_i，计算它到K个聚类中心的距离并将其分到距离最小的聚类中心对应的类中$</li>
+<li>$针对每个类别c_i，重新计算其聚类中心c_i&#x3D;\frac{1}{|c_i|} \sum_{x\in c_i}x$</li>
+<li>$重复第2和第3步骤，直到\sum_{i&#x3D;0}^{n} \min <em>{c</em>{j} \in C}\left(\left|x_{j}-c_{i}\right|^{2}\right)  小于特定的阈值$</li>
+</ol>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227105703045.png" srcset="/img/loading.gif" lazyload class title="image-20221227105703045">
+
+<p>Kmeans算法为启发式算法，遵循的寻优原则：每次聚类保证局部最优，随后调整聚类，利用局部最优聚类的上限来不断逼近全局最优</p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227110617977.png" srcset="/img/loading.gif" lazyload alt="image-20221227110617977" style="zoom:50%;">
+
+<table>
+<thead>
+<tr>
+<th>m1</th>
+<th>m2</th>
+<th>k1</th>
+<th>k2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>4</td>
+<td>{2,3}</td>
+<td>{4,10,12,20,30,11,25}</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>16</td>
+<td>{2,3,4}</td>
+<td>{10,12,20,30,11,25}</td>
+</tr>
+<tr>
+<td>3</td>
+<td>18</td>
+<td>{2,3,4,10}</td>
+<td>{12,20,30,11,25}</td>
+</tr>
+<tr>
+<td>4.75</td>
+<td>19.6</td>
+<td>{2,3,4,10,11,12}</td>
+<td>{20,30,25}</td>
+</tr>
+<tr>
+<td>7</td>
+<td>25</td>
+<td>{2,3,4,10,11,12}</td>
+<td>{20,30,25}</td>
+</tr>
+</tbody></table>
+<p>示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans<br><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> make_blobs<br>plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">12</span>))<br>n_samples = <span class="hljs-number">1500</span><br>random_state = <span class="hljs-number">170</span><br>X, y = make_blobs(n_samples=n_samples,random_state=random_state)<br>plt.subplot (<span class="hljs-number">321</span>)<br>plt.scatter(X[ :, <span class="hljs-number">0</span>],X[ : ,<span class="hljs-number">1</span>], c=y)<br>plt.title(<span class="hljs-string">&quot;originai Blobs&quot;</span>)<br>y_pred = KMeans(n_clusters=<span class="hljs-number">3</span>,random_state=random_state).fit_predict(X)<br>plt.subplot(<span class="hljs-number">322</span>)<br>plt.scatter(X[:,<span class="hljs-number">0</span>],X[:,<span class="hljs-number">1</span>],c=y_pred)<br>plt.title(<span class="hljs-string">&quot;correct Number of Blobs&quot;</span> )<br></code></pre></td></tr></table></figure>
+
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227112252911.png" srcset="/img/loading.gif" lazyload class title="image-20221227112252911">
+
+<p>算法的<strong>计算复杂度</strong>为O(nkt)</p>
+<ul>
+<li>n为数据集中对象的数目</li>
+<li>k为期望得到的簇的数目</li>
+<li>t为迭代的次数</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li><p>聚类时间快</p>
+</li>
+<li><p>当结果簇是密集的，而簇与簇之间区别明显时，效果较好</p>
+</li>
+<li><p>相对可扩展和有效，能对大数据集进行高效划分</p>
+</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li><p>用户必须事先指定聚类簇的个数</p>
+</li>
+<li><p>常常终止于局部最优</p>
+</li>
+<li><p>只适用于数值属性聚类(计算均值有意义)</p>
+</li>
+<li><p>对噪声和异常数据很敏感</p>
+</li>
+<li><p>不同的初始值，结果可能不同</p>
+</li>
+<li><p>不适合发现非凸面形状的簇</p>
+</li>
+</ul>
+<h2 id="keams问题改进"><a href="#keams问题改进" class="headerlink" title="keams问题改进"></a>keams问题改进</h2><h3 id="k-众数-k-modes"><a href="#k-众数-k-modes" class="headerlink" title="k-众数(k-modes)"></a><strong>k-众数(k-modes)</strong></h3><p><strong>用来解决keans数据敏感问题</strong></p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227112703718.png" srcset="/img/loading.gif" lazyload class title="image-20221227112703718">
+
+<h3 id="KMeans-算法"><a href="#KMeans-算法" class="headerlink" title="KMeans++算法"></a><strong>KMeans++算法</strong></h3><p><strong>解决初始点选择问题</strong></p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227113141944.png" srcset="/img/loading.gif" lazyload class title="image-20221227113141944">
+
+<ol>
+<li>从输入的数据点集合中随机选择一个点作为第一个聚类中心</li>
+<li>对于数据集中的每一个点X，计算其与聚类中心的距离D(X)</li>
+<li>选择一个D(X)最大的点作为新的聚类中心</li>
+<li>重复2和3步直到K个聚类中心被选出</li>
+<li>利用K个初始聚类中心运行K-Means</li>
+</ol>
+<p><strong>尽可能选择距离远的点来作为初始种子节点</strong></p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227113153911.png" srcset="/img/loading.gif" lazyload class title="image-20221227113153911">
+
+<h3 id="k-中心点"><a href="#k-中心点" class="headerlink" title="k-中心点"></a><strong>k-中心点</strong></h3><p><strong>解决对离群点敏感问题</strong></p>
+<ul>
+<li><p>选用簇中位置<strong>最中心的实际对象</strong>即中心点作为参照点</p>
+</li>
+<li><p>基于最小化所有对象与其参照点之间的相异度之和的原则来划分(使用绝对误差标准)</p>
+</li>
+</ul>
+<p>划分方法聚类质量评价准则：最小化E值<br>$$<br>E&#x3D;\sum_{i&#x3D;1}^{k} \Sigma_{p \in C_{i}}\left(d\left(p, c_{i}\right)\right)^{2}<br>$$<br><strong>举例</strong></p>
+<p>一维空间的7个点 1  2  3  8  9  10  25(离群点)，设置k&#x3D;2</p>
+<p>(1,2,3) (8,9,10,25) 聚类的E值为： </p>
+<p>$(1-2)^2+ (2-2)^2 + (3-2)^2 + (8-13)^2 + (9-13)^2 + (10-13)^2 + (25-13)^2 &#x3D;196$</p>
+<p>(1,2,3,8) (9,10,25) 的E值为：</p>
+<p>$(1-3.5)^2+ (2-3.5)^2 + (3-3.5)^2 + (8-3.5)^2 + (9-14.67)^2 + (10-14.67)^2 + (25-14.67)^2 &#x3D;196$</p>
+<p>因此划分为(1,2,3,8) (9,10,25) </p>
+<img src="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-K%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/image-20221227113745023.png" srcset="/img/loading.gif" lazyload class title="image-20221227113745023">
 
                 
               </div>
@@ -335,7 +497,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">环境配置</a>
+  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
   
   
 
@@ -350,7 +512,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Python/">#Python</a>
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">#数据挖掘</a>
       
     </div>
   
@@ -362,8 +524,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Jupyter 添加 Python2 环境</div>
-      <div>https://iceyjchen.github.io/2022/12/22/环境配置/Jupyter添加Python2环境/</div>
+      <div>数据挖掘- K均值聚类</div>
+      <div>https://iceyjchen.github.io/2022/12/27/数据挖掘/数据挖掘-K均值聚类/</div>
     </div>
     <div class="license-meta">
       
@@ -375,7 +537,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月22日</div>
+          <div>2022年12月27日</div>
         </div>
       
       
@@ -419,15 +581,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/24/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%9F%BA%E7%A1%80/" title="数据挖掘-基础">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据挖掘-基础</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/12/27/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/" title="数据挖掘-逻辑回归">
+                        <span class="hidden-mobile">数据挖掘-逻辑回归</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -506,6 +668,11 @@
 
 
   
+
+
+  
+  
+
 
 
 
