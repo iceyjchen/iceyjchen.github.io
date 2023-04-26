@@ -1,0 +1,196 @@
+{
+  "main": {
+    "id": "89341b74db74944e",
+    "type": "split",
+    "children": [
+      {
+        "id": "4c9e70e804f23c08",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "212f9ae85fa03f89",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/2023-04-26.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f61760eacef65bcd",
+    "type": "split",
+    "children": [
+      {
+        "id": "8b22e191794ca3e5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b27264ec999c06ee",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "46cf0d69d2e01c90",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "896714d8eeac94bb",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "87605cf40a3f16cd",
+            "type": "leaf",
+            "state": {
+              "type": "file-tree-view",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f851978213a9b345",
+    "type": "split",
+    "children": [
+      {
+        "id": "101453f2cc3c36bc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a4c620158e07d257",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "source/_posts/2023-04-26.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c3db367e2f70d875",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "source/_posts/2023-04-26.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0205b4b3fceec888",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2f0e10fb2b74a381",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "source/_posts/2023-04-26.md"
+              }
+            }
+          },
+          {
+            "id": "474e58a48f9b3177",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "file-tree-alternative:File Tree Alternative Plugin": false
+    }
+  },
+  "active": "212f9ae85fa03f89",
+  "lastOpenFiles": [
+    "source/_posts/2023-04-26.md",
+    "source/未命名.md",
+    "source/_posts/测试文章.md",
+    "source/_posts/未命名.md",
+    "source/_posts/Scarpy基本使用.md",
+    "_obdisian.md",
+    "source/_posts/python安全编程.md",
+    "source/_obsidian/Post Template.md",
+    "public/img/default.png",
+    "source/_obsidian",
+    "source/_posts/ces",
+    "source/_posts/新建文件夹",
+    "public/img/police_beian.png",
+    "public/img/avatar.png",
+    "public/img/fluid.png",
+    "public/links/index.html",
+    "public/js/utils.js",
+    "public/js/plugins.js",
+    "public/js/local-search.js",
+    "public/js/leancloud.js",
+    "public/js/img-lazyload.js",
+    "public/js/events.js",
+    "public/img/loading.gif",
+    "public/2022/11/26/Scarpy基本使用/20180502174530976.png",
+    "public/2022/11/25/测试文章/test.png",
+    "public/2022/11/25/测试文章/test-16693885828361.png",
+    "public/2022/11/25/测试文章/image-20221125231403480.png"
+  ]
+}
