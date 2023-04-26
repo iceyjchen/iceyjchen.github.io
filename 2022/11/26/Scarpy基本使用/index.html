@@ -1,0 +1,977 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ICEY_">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基础介绍架构  Engine:图中最中间的部分，中文可以称为引擎，用来处理整个系统的数据流和事件，是整个框架的核心，可以理解为整个框架的中央处理器，负责数据的流转和逻辑的处理。Item:它是一个抽象的数据结构，所以图中没有体现出来，它定义了爬取结果的数据结构，爬取的数据会被赋值成Item对象。每个Iltem就是一个类，类里面定义了爬取结果的数据字段，可以理解为它用来规定爬取数据的存储格式。°Sch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scarpy基本使用">
+<meta property="og:url" content="http://example.com/2022/11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="ICEY">
+<meta property="og:description" content="基础介绍架构  Engine:图中最中间的部分，中文可以称为引擎，用来处理整个系统的数据流和事件，是整个框架的核心，可以理解为整个框架的中央处理器，负责数据的流转和逻辑的处理。Item:它是一个抽象的数据结构，所以图中没有体现出来，它定义了爬取结果的数据结构，爬取的数据会被赋值成Item对象。每个Iltem就是一个类，类里面定义了爬取结果的数据字段，可以理解为它用来规定爬取数据的存储格式。°Sch">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png">
+<meta property="article:published_time" content="2022-11-26T14:33:01.000Z">
+<meta property="article:modified_time" content="2022-11-26T14:37:17.000Z">
+<meta property="article:author" content="ICEY_">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png">
+  
+  
+  
+  <title>Scarpy基本使用 - ICEY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"5FdBjnotIqOnpIO6T8lUqHtK-gzGzoHsz","app_key":"kJ3ijUBar7irF5XDBotw8Gqu","server_url":"https://5fdbjnot.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ICEY_</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Scarpy基本使用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-26 22:33" pubdate>
+          2022年11月26日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          22k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          186 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+           <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Scarpy基本使用</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年11月26日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h2><h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><img src="/2022/11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<p>Engine:图中最中间的部分，中文可以称为引擎，用来处理整个系统的数据流和事件，是整个框架的核心，可以理解为整个框架的中央处理器，负责数据的流转和逻辑的处理。<br>Item:它是一个抽象的数据结构，所以图中没有体现出来，它定义了爬取结果的数据结构，爬取的数据会被赋值成Item对象。每个Iltem就是一个类，类里面定义了爬取结果的数据字段，可以理解为它用来规定爬取数据的存储格式。°<br>Scheduler:图中下方的部分，中文可以称为调度器，它用来接受Engine发过来的Request 并将其加入队列中，同时也可以将 Request 发回给Engine供 Downloader执行，它主要维护Request的调度逻辑，比如先进先出、先进后出、优先级进出等等。<br>Spiders:图中上方的部分,中文可以称为蜘蛛,Spiders是一个复数统称,其可以对应多个Spider,每个Spider 里面定义了站点的爬取逻辑和页面的解析规则，它主要负责解析响应并生成Item和新的请求然后发给Engine进行处理。<br>Downloader:图中右侧部分，中文可以称为下载器，即完成“向服务器发送请求，然后拿到响应”的过程,得到的响应会再发送给Engine处理。<br>Item Pipelines:图中左侧部分，中文可以称为项目管道，这也是一个复数统称，可以对应多个Item Pipeline。Item Pipeline主要负责处理由Spider 从页面中抽取的 Item，做一些数据清洗、验证和存储等工作，比如将Item的某些字段进行规整，将Item存储到数据库等操作都可以由Item Pipeline来完成。<br>Downloader Middlewares:图中 Engine和 Downloader 之间的方块部分，中文可以称为下载器中间件，同样这也是复数统称，其包含多个Downloader Middleware，它是位于 Engine和Downloader之间的Hook框架,负责实现Downloader和 Engine之间的请求和响应的处理过程。</p>
+<p>Spider Middlewares:图中 Engine和Spiders之间的方块部分，中文可以称为蜘蛛中间件，它是位于Engine和 Spiders之间的Hook框架，负责实现Spiders 和 Engine之间的Item.<br>请求和响应的处理过程。</p>
+<h3 id="数据流处理过程"><a href="#数据流处理过程" class="headerlink" title="数据流处理过程"></a>数据流处理过程</h3><p>(1)启动爬虫项目时，Engine根据要爬取的目标站点找到处理该站点的Spider，Spider 会生成最初需要爬取的页面对应的一个或多个Request，然后发给Engine。<br>(2) Engine 从 Spider中获取这些Request，然后把它们交给Scheduler等待被调度。<br>(3)Engine向 Scheduler索取下一个要处理的Request，这时候Scheduler根据其调度逻辑选择合适的Request发送给Engine。<br>(4) Engine将Scheduler发来的 Request转发给Downloader进行下载执行，将Request发送给Downloader的过程会经由许多定义好的 Downloader Middlewares 的处理。<br>(5) Downloader将Request 发送给目标服务器，得到对应的Response，然后将其返回给Engine。将Response返回 Engine的过程同样会经由许多定义好的 Downloader Middlewares的处理。<br>(6) Engine 从 Downloder处接收到的 Response里包含了爬取的目标站点的内容，Engine会将此Response发送给对应的Spider进行处理，将Response发送给Spider 的过程中会经由定义好的SpiderMiddlewares的处理。<br>(7)Spider处理Response，解析Response的内容，这时候Spider会产生一个或多个爬取结果Item或者后续要爬取的目标页面对应的一个或多个Request，然后再将这些Item或Request 发送给Engine进行处理，将Item或Request发送给Engine的过程会经由定义好的Spider Middlewares的处理。<br>(8)Engine将Spider发回的一个或多个Item转发给定义好的Item Pipelines进行数据处理或存储的一系列操作，将Spider 发回的一个或多个Request转发给Scheduler等待下一次被调度。<br>重复第(2)步到第(8)步，直到Scheduler中没有更多的Request，这时候Engine会关闭Spider,整个爬取过程结束。</p>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>创建项目</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">scrapy startproject project_name</span><br></code></pre></td></tr></table></figure>
+
+<p>进入项目，创建spider</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">scrapy genspider spider_name spider_domain</span><br></code></pre></td></tr></table></figure>
+
+<p>目录结构</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">|<span class="hljs-string"></span><br><span class="hljs-string"></span>|___project_name<br>|<span class="hljs-string">	</span>|<br>|<span class="hljs-string">	</span>|___<br>|<span class="hljs-string">	</span>|<br>|<span class="hljs-string">	</span>|___<br>|<span class="hljs-string"></span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string"></span><br><span class="hljs-string"></span>|<br>|<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="Spider使用"><a href="#Spider使用" class="headerlink" title="Spider使用"></a>Spider使用</h2><p>功能：定义爬取网站的动作和分析爬取下的网页</p>
+<p>Spider爬取循环</p>
+<ol>
+<li>以初始的URL初始化Request并设置回调方法。当该Request成功请求并返回时，将生成Response并将其作为参数传给该回调方法。</li>
+<li>在回调方法内分析返回的网页内容。返回结果可以有两种形式，一种是将解析到的有效结果返回字典或Item对象，下一步可直接保存或者经过处理后保存;另一种是解析的下一个链接，可以利用此链接构造Request并设置新的回调方法，返回Request</li>
+<li>如果返回的是字典或Item对象，可以保存到文件或者经由Pipeline处理（如过滤、修正等)并保存。</li>
+<li>如果返回的是Reqeust，那么Request 执行成功得到Response之后会再次传递给Request 中定义的回调方法，可以再次使用选择器来分析新得到的网页内容，并根据分析的数据生成Item.</li>
+</ol>
+<h4 id="基础属性"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性</h4><ul>
+<li>name:爬虫名称，是定义Spider名字的字符串。Spider的名字定义了Scrapy如何定位并初始化 Spider，所以它必须是唯一的。不过我们可以生成多个相同的Spider实例，这没有任何限制。name是Spider最重要的属性，而且是必须的。如果该Spider爬取单个网站，一个常见的做法是以该网站的域名名称来命名Spider。例如 Spider爬取mywebsite.com ，该Spider通常会被命名为mywebsite。</li>
+<li>allowed_domains:允许爬取的域名，是一个可选的配置，不在此范围的链接不会被跟进爬取。</li>
+<li>start_urls:起始URL列表，当我们没有实现start_requests方法时，默认会从这个列表开始抓取。</li>
+<li>custom_settings:一个字典，是专属于本Spider 的配置，此设置会覆盖项目全局的设置，而且此设置必须在初始化前被更新，所以它必须定义成类变量。</li>
+<li>crawler:此属性是由from_crawler方法设置的，代表的是本Spider类对应的Crawler对象，Crawler对象中包含了很多项目组件，利用它我们可以获取项目的一些配置信息，常见的就是获取项目的设置信息，即 Settings。</li>
+<li>settings:一个Settings对象，利用它我们可以直接获取项目的全局设置变量。</li>
+</ul>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><ul>
+<li>start_requests:此方法用于生成初始请求，它必须返回一个可迭代对象，此方法会默认使用start_urls里面的URL来构造Request，而且Request是GET请求方式。如果我们想在启动时以POST方式访问某个站点，可以直接重写这个方法，发送 POST请求时我们使用FormRequest即可。</li>
+<li>parse:当Response没有指定回调方法时，该方法会默认被调用，它负责处理Response，并从或Item的中提取想要的数据和下一步的请求，然后返回。该方法需要返回一个包含Request可迭代对象。</li>
+<li>closed:当Spider关闭时，该方法会被调用，这里一般会定义释放资源的一些操作或其他收尾操作。</li>
+</ul>
+<h5 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h5><ul>
+<li>url: Request的页面链接，即Request URL。</li>
+<li>callback:Request的回调方法，通常这个方法需要定义在Spider类里面，并且需要对应一个response参数，代表Request执行请求后得到的Response对象。如果这个callback参数不指定，默认会使用Spider类里面的parse方法。</li>
+<li>method: Request的方法，默认是GET，还可以设置为POST、PUT、DELETE等。</li>
+<li>meta:Request 请求携带的额外参数，利用meta，我们可以指定任意处理参数，特定的参数经由Scrapy各个组件的处理,可以得到不同的效果。另外,meta还可以用来向回调方法传递信息。body: Request的内容，即 Request Body，往往Request Body对应的是POST请求,可以使用FormRequest或JsonRequest更方便地实现POST请求。</li>
+<li>headers: Request Headers，是字典形式。</li>
+<li>cookies: Request携带的Cookie，可以是字典或列表形式。encoding: Request的编码，默认是utf-8。</li>
+<li>prority:Request优先级，默认是0，这个优先级是给Scheduler做Request调度使用的，数值越大，就越被优先调度并执</li>
+<li>dont_filter:Request不去重，Scrapy默认会根据Request的信息进行去重，使得在爬取过程中不会出现重复请求，设置为True代表这个Request会被忽略去重操作，默认是False.</li>
+<li>errback:错误处理方法，如果在请求处理过程中出现了错误，这个方法就会被调用。flags:请求的标志，可以用于记录类似的处理。</li>
+<li>cb_kwargs:回调方法的额外参数，可以作为字典传递。</li>
+</ul>
+<h5 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h5><ul>
+<li>url: Request URL。</li>
+<li>status : Response状态码，如果请求成功就是200。</li>
+<li>headers: Response Headers，是一个字典，字段是一一对应的。</li>
+<li>body:Response Body，这个通常就是访问页面之后得到的源代码结果了，比如里面包含的是HTML或者JSON字符串，但注意其结果是bytes类型。</li>
+<li>request: Response对应的 Request对象。</li>
+<li>certificate:是twisted.internet.ssl.Certificate类型的对象，通常代表一个SSL证书对象。</li>
+<li>ip_address:是一个ipaddress.IPv4Address或ipaddress.IPv6Address类型的对象，<br>代表服务器的IP地址。</li>
+<li>urljoin:是对URL的一个处理方法，可以传入当前页面的相对URL，该方法处理后返回的就是绝对URL。</li>
+<li>follow&#x2F;follow all:是一个根据URL来生成后续Request的方法，和直接构造Request不同的是，该方法接收的url可以是相对URL，不必一定是绝对URL。</li>
+</ul>
+<p> <strong>方法</strong></p>
+<ul>
+<li>text:同body属性，但结果是str类型。</li>
+<li>encoding: Response的编码，默认是utf-8。</li>
+<li>selector:根据Response的内容构造而成的Selector对象，Selector在上一节我们已经了解过，利用它我们可以进一步调用xpath、css 等方法进行结果的提取。</li>
+<li>xpath:传入XPath进行内容提取，等同于调用selector的xpath 方法。</li>
+<li>css:传入CSS选择器进行内容提取，等同于调用selector的css方法。</li>
+<li>json:是Scrapy 2.2新增的方法，利用该方法可以直接将text属性转为JSON对象</li>
+</ul>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy<br><span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> Request<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">HttpbinSpider</span>(scrapy.Spider):<br>    name = <span class="hljs-string">&#x27;httpbin2&#x27;</span><br>    allowed_domains = [<span class="hljs-string">&#x27;httpbin.org&#x27;</span>]<br>    start_url = <span class="hljs-string">&#x27;https://httpbin.org/get&#x27;</span><br>    headers = &#123;<br>        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36&#x27;</span><br>    &#125;<br>    cookies = &#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;germey&#x27;</span>, <span class="hljs-string">&#x27;age&#x27;</span>: <span class="hljs-string">&#x27;26&#x27;</span>&#125;<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start_requests</span>(<span class="hljs-params">self</span>): <span class="hljs-comment"># 默认有隐式定义</span><br>        <span class="hljs-keyword">for</span> offset <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>            url = self.start_url + <span class="hljs-string">f&#x27;?offset=<span class="hljs-subst">&#123;offset&#125;</span>&#x27;</span><br>            <span class="hljs-keyword">yield</span> Request(url, headers=self.headers,<br>                          cookies=self.cookies,<br>                          callback=self.parse_response,<br>                          meta=&#123;<span class="hljs-string">&#x27;offset&#x27;</span>: offset&#125;)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_response</span>(<span class="hljs-params">self, response</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;url&#x27;</span>, response.url)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;request&#x27;</span>, response.request)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;status&#x27;</span>, response.status)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;headers&#x27;</span>, response.headers)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;text&#x27;</span>, response.text)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;meta&#x27;</span>, response.meta)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Downloader-Middleware"><a href="#Downloader-Middleware" class="headerlink" title="Downloader Middleware"></a>Downloader Middleware</h2><p><strong>作用</strong></p>
+<ul>
+<li>Engine从Scheduler获取Request发送给Downloader，在Request被Engine发送给Downloader执行下载之前，Downloader Middleware可以对Request进行修改。</li>
+<li>Downloader执行Request后生成Response，在Response被Engine发送给Spider之前，也就是在Resposne被Spider解析之前，Downloder Middleware可以对Response进行修改</li>
+</ul>
+<p>功能：修改Agent、重定向、设置代理、失败重试、设置Cookie</p>
+<p>每个DownloaderMiddleware都可以通过定义process_request和process_response方法来分别处理Request和Response,被开启的Downloader Middleware的process_request方法和process_response方法会根据优先级被顺次调用，数字越小越靠近Engine，越大越靠近Downloader Middleware</p>
+<p>核心方法：</p>
+<ul>
+<li>process_request(request，spider)</li>
+<li>process_response(request，response，spider)</li>
+<li>process_exception(request，exception，spider)</li>
+</ul>
+<p>定义其中一个可以实现一个Downloader Middleware</p>
+<h3 id="process-request"><a href="#process-request" class="headerlink" title="process_request"></a>process_request</h3><p>Request从Scheduler里被调度出来发送到Downloader下载执行之前，可以用process_request方法对Request进行处理。</p>
+<p>参数：</p>
+<ul>
+<li>request对象</li>
+<li>spider，request对应的spider对象</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><p>None：执行其他Downloader Middleware的process_requst方法，知道执行得到Response</p>
+</li>
+<li><p>Response对象：不调用低优先级的process_request和process_exception方法，调用process_response方法，完成后发送到Spider</p>
+</li>
+<li><p>Request对象：低优先级的process_request对象停止执行，重新回到调度队列。若被调度，所有的process_request方法重新按照顺序执行</p>
+</li>
+<li><p>抛出IgnoreRequest异常：执行process_exception，如果不存在异常处理方法，则errorback方法会回调</p>
+</li>
+</ul>
+<h3 id="process-response"><a href="#process-response" class="headerlink" title="process_response"></a>process_response</h3><p>Downloader 执行 Request下载之后，会得到对应的 Response。Engine便会将Response发送给Spider进行解析。在发送给Spider之前，我们都可以用process_response方法来对Response进行处理</p>
+<p>参数：</p>
+<ul>
+<li>request: Request对象，即此Response对应的Request。</li>
+<li>response: Response对象，即被处理的Response。</li>
+<li>spider: Spider对象，即此 Response对应的Spider对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Request对象：低优先级的process_response对象停止执行，重新回到调度队列。若被调度，所有的process_request方法重新按照顺序执行</li>
+<li>Response对象：更低优先级的Downloader Middleware的process_response继续被调用，对该Response对象进行处理。</li>
+<li>IgnoreRequest异常：Request 的errorback方法会回调。如果该异常还没有被处理,那么它会被忽略。</li>
+</ul>
+<h3 id="process-exception"><a href="#process-exception" class="headerlink" title="process_exception"></a>process_exception</h3><p>参数：</p>
+<ul>
+<li>request: Request对象，即异常的Request。</li>
+<li>exception: Exception对象，即抛出的异常。</li>
+<li>spider: Spider对象，即Request对应的Spider对象。</li>
+</ul>
+<p>返回值：</p>
+<p>None：更低优先级的Downloader Middleware的process_exception继续被调用到执行完毕</p>
+<p>Response：不调用低优先级的process_exception方法，调用process_response方法</p>
+<p>Request：低优先级的process_exception对象停止执行，重新回到调度队列。若被调度，所有的process_request方法重新按照顺序执行</p>
+<h3 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#middlewares.py配置useragent、proxy、返回码</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">RandomUserAgentMiddleware</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.user_agents = [<br>            <span class="hljs-string">&#x27;Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)&#x27;</span>,<br>            <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2&#x27;</span>,<br>            <span class="hljs-string">&#x27;Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1&#x27;</span><br>        ]<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_request</span>(<span class="hljs-params">self, request, spider</span>):<br>        request.headers[<span class="hljs-string">&#x27;User-Agent&#x27;</span>] = random.choice(self.user_agents)<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ProxyMiddleware</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_request</span>(<span class="hljs-params">self, request, spider</span>):<br>        request.meta[<span class="hljs-string">&#x27;proxy&#x27;</span>] = <span class="hljs-string">&#x27;http://157.100.12.138:999&#x27;</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ChangeResponseMiddleware</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_response</span>(<span class="hljs-params">self, request, response, spider</span>):<br>        response.status = <span class="hljs-number">201</span><br>        <span class="hljs-keyword">return</span> response<br>    <br><span class="hljs-comment"># setting设置优先级</span><br>DOWNLOADER_MIDDLEWARES = &#123;<br>    <span class="hljs-string">&#x27;scrapydownloadermiddlewaredemo.middlewares.RandomUserAgentMiddleware&#x27;</span>: <span class="hljs-number">543</span>,<br>    <span class="hljs-string">&#x27;scrapydownloadermiddlewaredemo.middlewares.ChangeResponseMiddleware&#x27;</span>: <span class="hljs-number">544</span>,<br>    <span class="hljs-string">&#x27;scrapydownloadermiddlewaredemo.middlewares.ProxyMiddleware&#x27;</span>: <span class="hljs-number">544</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>返回结果</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json">Text<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;headers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;Accept&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;Accept-Encoding&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;gzip, deflate&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;Accept-Language&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;en&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;Host&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;httpbin.org&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;User-Agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;X-Amzn-Trace-Id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Root=1-635f9ebb-5b6b8f61460ed7d05370e77d&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;X-Proxy-Id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1875528327&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;origin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;122.193.87.110, 157.100.12.138&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://httpbin.org/get&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Spider-Middleware"><a href="#Spider-Middleware" class="headerlink" title="Spider Middleware"></a>Spider Middleware</h2><p>处于Spider和Engine之间的处理模块。当Downloader生成Response之后，Response会被发送给Spider,在发送给Spider之前，Response会首先经过Spider Middleware的处理,当Spider处理生成item和Request之后，item和Request还会经过Spider Middleware的处理</p>
+<p><em><a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/spider-middleware.html">https://docs.scrapy.org/en/latest/topics/spider-middleware.html</a></em></p>
+<p><strong>作用：</strong></p>
+<ul>
+<li>Downloader 生成Response之后，Engine 会将其发送给Spider进行解析，在Response发送给Spider之前，可以借助Spider Middleware对 Response进行处理。</li>
+<li>Spider生成Request之后会被发送至Engine，然后Request会被转发到Scheduler，在Request被发送给Engine之前，可以借助Spider Middleware对Request进行处理。</li>
+<li>Spider生成 Item之后会被发送至Engine，然后Item会被转发到 ItemPipeline，在 Item被发送给Engine之前，可以借助Spider Middleware对Item进行处理。</li>
+</ul>
+<p><strong>核心方法</strong></p>
+<ul>
+<li><p>process_spider_input(response，spider)</p>
+</li>
+<li><p>process_spider_output(response，result，spider)</p>
+</li>
+<li><p>process_spider_exception(response,exception，spider)</p>
+</li>
+<li><p>process_start_requests(start_requests,spider)</p>
+</li>
+</ul>
+<p>与Downloader Middleware类似</p>
+<h3 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h3><p>spider</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> Spider, Request<br><br><span class="hljs-keyword">from</span> scrapyspidermiddlewaredemo.items <span class="hljs-keyword">import</span> DemoItem<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">HttpbinSpider</span>(<span class="hljs-title class_ inherited__">Spider</span>):<br>    name = <span class="hljs-string">&#x27;httpbin&#x27;</span><br>    allowed_domains = [<span class="hljs-string">&#x27;httpbin.org&#x27;</span>]<br>    start_url = <span class="hljs-string">&#x27;https://httpbin.org/get&#x27;</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start_requests</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>            url = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;self.start_url&#125;</span>?query=<span class="hljs-subst">&#123;i&#125;</span>&#x27;</span><br>            <span class="hljs-keyword">yield</span> Request(url, callback=self.parse)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">parse</span>(<span class="hljs-params">self, response</span>): <span class="hljs-comment"># 将Response转化为DemoItem</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Status&#x27;</span>, response.status)<br>        item = DemoItem(**response.json())<br>        <span class="hljs-keyword">yield</span> item<br></code></pre></td></tr></table></figure>
+
+<p>items</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoItem</span>(scrapy.Item):<br>    origin = scrapy.Field()<br>    headers = scrapy.Field()<br>    args = scrapy.Field()<br>    url = scrapy.Field()<br></code></pre></td></tr></table></figure>
+
+<p>middlewares</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapyspidermiddlewaredemo.items <span class="hljs-keyword">import</span> DemoItem<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomizeMiddleware</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_spider_input</span>(<span class="hljs-params">self, response, spider</span>):<br>        response.status = <span class="hljs-number">201</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_spider_output</span>(<span class="hljs-params">self, response, result, spider</span>):<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> result:<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(i, DemoItem):<br>                i[<span class="hljs-string">&#x27;origin&#x27;</span>] = <span class="hljs-literal">None</span><br>                <span class="hljs-keyword">yield</span> i<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_spider_exception</span>(<span class="hljs-params">self, response, exception, spider</span>):<br>        <span class="hljs-comment"># Called when a spider or process_spider_input() method</span><br>        <span class="hljs-comment"># (from other spider middleware) raises an exception.</span><br>        <br>        <span class="hljs-comment"># Should return either None or an iterable of Request or item objects.</span><br>        <span class="hljs-keyword">pass</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_start_requests</span>(<span class="hljs-params">self, start_requests, spider</span>):<br>        <span class="hljs-keyword">for</span> request <span class="hljs-keyword">in</span> start_requests:<br>            url = request.url<br>            url += <span class="hljs-string">&#x27;&amp;name=germey&#x27;</span><br>            request = request.replace(url=url)<br>            <span class="hljs-keyword">yield</span> request<br></code></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-number">2022</span><span class="hljs-number">-10</span><span class="hljs-number">-31</span> <span class="hljs-number">18</span>:<span class="hljs-number">38</span>:<span class="hljs-number">30</span> [scrapy.core.scraper] <span class="hljs-keyword">DEBUG</span>: Scraped <span class="hljs-keyword">from</span> &lt;<span class="hljs-number">201</span> https://httpbin.org/<span class="hljs-keyword">get</span>?query=<span class="hljs-number">4</span>&amp;<span class="hljs-type">name</span>=germey&gt;<br>&#123;<span class="hljs-string">&#x27;args&#x27;</span>: &#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;germey&#x27;</span>, <span class="hljs-string">&#x27;query&#x27;</span>: <span class="hljs-string">&#x27;4&#x27;</span>&#125;,<br> <span class="hljs-string">&#x27;headers&#x27;</span>: &#123;<span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x27;</span>,<br>             <span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>: <span class="hljs-string">&#x27;gzip, deflate&#x27;</span>,<br>             <span class="hljs-string">&#x27;Accept-Language&#x27;</span>: <span class="hljs-string">&#x27;en&#x27;</span>,<br>             <span class="hljs-string">&#x27;Host&#x27;</span>: <span class="hljs-string">&#x27;httpbin.org&#x27;</span>,<br>             <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Scrapy/2.7.0 (+https://scrapy.org)&#x27;</span>,<br>             <span class="hljs-string">&#x27;X-Amzn-Trace-Id&#x27;</span>: <span class="hljs-string">&#x27;Root=1-635fa5a6-52b6778b2d2f7bbe158b468c&#x27;</span>&#125;,<br> <span class="hljs-string">&#x27;origin&#x27;</span>: <span class="hljs-keyword">None</span>,<br> <span class="hljs-string">&#x27;url&#x27;</span>: <span class="hljs-string">&#x27;https://httpbin.org/get?query=4&amp;name=germey&#x27;</span>&#125;<br>Status <span class="hljs-number">201</span><br></code></pre></td></tr></table></figure>
+
+<p>url属性被替换，改写了Request</p>
+<p>response被替换，改写了Response</p>
+<p>相关内置Spider Middelware</p>
+<ul>
+<li>HttpErrorMiddleware：过滤需要忽略的Response</li>
+<li>OffisteMiddleware：过滤不符合allow_domains的Request</li>
+<li>UrlLengthMiddleware：根据URL长度过滤</li>
+</ul>
+<h2 id="Item-Pipeline"><a href="#Item-Pipeline" class="headerlink" title="Item Pipeline"></a>Item Pipeline</h2><p>调用发生在Spider产生Item之后。当Spider解析完Response,ltem就会被Engjne传递到Item Pipeline,被定义的Item Pipeline组件会顺次被调用</p>
+<p>功能</p>
+<ul>
+<li>清洗HTML数据。</li>
+<li>验证爬取数据，检查爬取字段。</li>
+<li>查重并丢弃重复内容。</li>
+<li>将爬取结果储存到数据库中。</li>
+</ul>
+<p>核心方法：</p>
+<ul>
+<li>process_item(item, spider)：必须实现的方法，被定义的 Item Pipeline 会默认调用这个方法对Item进行处理,比如进行数据处理或者将数据写入数据库等操作。process item方法必须返回Item类型的值或者抛出一个 Dropltem异常。返回Item类型的值会被低优先级的process_item处理</li>
+</ul>
+<p>可选方法：</p>
+<ul>
+<li>open_spider(spider)：自动调用，可以做初始化工作，如数据库连接</li>
+<li>close_spider(spider)：自动调用，做一些收尾工作，如关闭数据库连接</li>
+<li>from_crawler(cls, crawler)：一个类方法，用@classmethod标识，通过crawler对象，我们可以拿到Scrapy的所有核心组件，如全局配置的每个信息。然后可以在这个方法里面创建一个Pipeline实例。参数cls就是Class，最后返回一个Class实例。</li>
+</ul>
+<h3 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a>举例</h3><p>scrapy</p>
+<p>定义爬取逻辑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> Request, Spider<br><br><span class="hljs-keyword">from</span> scrapyitempipelinedemo.items <span class="hljs-keyword">import</span> MovieItem<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ScrapeSpider</span>(<span class="hljs-title class_ inherited__">Spider</span>):<br>    name = <span class="hljs-string">&#x27;scrape&#x27;</span><br>    allowed_domains = [<span class="hljs-string">&#x27;ssr1.scrape.center&#x27;</span>]<br>    base_url = <span class="hljs-string">&#x27;https://ssr1.scrape.center&#x27;</span><br>    max_page = <span class="hljs-number">10</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start_requests</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, self.max_page + <span class="hljs-number">1</span>):<br>            url = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;self.base_url&#125;</span>/page/<span class="hljs-subst">&#123;i&#125;</span>&#x27;</span><br>            <span class="hljs-keyword">yield</span> Request(url, callback=self.parse_index)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_index</span>(<span class="hljs-params">self, response</span>):<br>        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> response.css(<span class="hljs-string">&#x27;.item&#x27;</span>):<br>            href = item.css(<span class="hljs-string">&#x27;.name::attr(href)&#x27;</span>).extract_first()<br>            url = response.urljoin(href)<br>            <span class="hljs-keyword">yield</span> Request(url, callback=self.parse_detail)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_detail</span>(<span class="hljs-params">self, response</span>):<br>        item = MovieItem()<br>        item[<span class="hljs-string">&#x27;name&#x27;</span>] = response.xpath(<span class="hljs-string">&#x27;//div[contains(@class, &quot;item&quot;)]//h2/text()&#x27;</span>).extract_first()<br>        item[<span class="hljs-string">&#x27;categories&#x27;</span>] = response.xpath(<span class="hljs-string">&#x27;//button[contains(@class, &quot;category&quot;)]/span/text()&#x27;</span>).extract()<br>        item[<span class="hljs-string">&#x27;score&#x27;</span>] = response.css(<span class="hljs-string">&#x27;.score::text&#x27;</span>).re_first(<span class="hljs-string">&#x27;[\d\.]+&#x27;</span>)<br>        item[<span class="hljs-string">&#x27;drama&#x27;</span>] = response.css(<span class="hljs-string">&#x27;.drama p::text&#x27;</span>).extract_first().strip()<br>        item[<span class="hljs-string">&#x27;directors&#x27;</span>] = []<br>        directors = response.xpath(<span class="hljs-string">&#x27;//div[contains(@class, &quot;directors&quot;)]//div[contains(@class, &quot;director&quot;)]&#x27;</span>)<br>        <span class="hljs-keyword">for</span> director <span class="hljs-keyword">in</span> directors:<br>            director_image = director.xpath(<span class="hljs-string">&#x27;.//img[@class=&quot;image&quot;]/@src&#x27;</span>).extract_first()<br>            director_name = director.xpath(<span class="hljs-string">&#x27;.//p[contains(@class, &quot;name&quot;)]/text()&#x27;</span>).extract_first()<br>            item[<span class="hljs-string">&#x27;directors&#x27;</span>].append(&#123;<br>                <span class="hljs-string">&#x27;name&#x27;</span>: director_name,<br>                <span class="hljs-string">&#x27;image&#x27;</span>: director_image<br>            &#125;)<br>        item[<span class="hljs-string">&#x27;actors&#x27;</span>] = []<br>        actors = response.css(<span class="hljs-string">&#x27;.actors .actor&#x27;</span>)<br>        <span class="hljs-keyword">for</span> actor <span class="hljs-keyword">in</span> actors:<br>            actor_image = actor.css(<span class="hljs-string">&#x27;.actor .image::attr(src)&#x27;</span>).extract_first()<br>            actor_name = actor.css(<span class="hljs-string">&#x27;.actor .name::text&#x27;</span>).extract_first()<br>            item[<span class="hljs-string">&#x27;actors&#x27;</span>].append(&#123;<br>                <span class="hljs-string">&#x27;name&#x27;</span>: actor_name,<br>                <span class="hljs-string">&#x27;image&#x27;</span>: actor_image<br>            &#125;)<br>        <span class="hljs-keyword">yield</span> item<br></code></pre></td></tr></table></figure>
+
+<p>items</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">MovieItem</span>(<span class="hljs-symbol">Item</span>):<br>    <span class="hljs-symbol">name</span> = <span class="hljs-symbol">Field</span>()<br>    <span class="hljs-symbol">categories</span> = <span class="hljs-symbol">Field</span>()<br>    <span class="hljs-symbol">score</span> = <span class="hljs-symbol">Field</span>()<br>    <span class="hljs-symbol">drama</span> = <span class="hljs-symbol">Field</span>()<br>    <span class="hljs-symbol">directors</span> = <span class="hljs-symbol">Field</span>()<br>    <span class="hljs-symbol">actors</span> = <span class="hljs-symbol">Field</span>(<br></code></pre></td></tr></table></figure>
+
+<p>pipelines</p>
+<p>定义MongoPipeline和重写Image下载的Pipeline（未保存到本地，有问题？）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itemadapter <span class="hljs-keyword">import</span> ItemAdapter<br><span class="hljs-keyword">from</span> elasticsearch <span class="hljs-keyword">import</span> Elasticsearch<br><br><span class="hljs-keyword">import</span> pymongo<br><br><span class="hljs-keyword">from</span> scrapyitempipelinedemo.items <span class="hljs-keyword">import</span> MovieItem<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MongoDBPipeline</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <br><span class="hljs-meta">    @classmethod</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">from_crawler</span>(<span class="hljs-params">cls, crawler</span>):<br>        cls.connection_string = crawler.settings.get(<span class="hljs-string">&#x27;MONGODB_CONNECTION_STRING&#x27;</span>)<br>        cls.database = crawler.settings.get(<span class="hljs-string">&#x27;MONGODB_DATABASE&#x27;</span>)<br>        cls.collection = crawler.settings.get(<span class="hljs-string">&#x27;MONGODB_COLLECTION&#x27;</span>)<br>        <span class="hljs-keyword">return</span> cls()<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open_spider</span>(<span class="hljs-params">self, spider</span>):<br>        self.client = pymongo.MongoClient(self.connection_string)<br>        self.db = self.client[self.database]<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_item</span>(<span class="hljs-params">self, item, spider</span>):<br>        self.db[self.collection].update_one(&#123;<br>            <span class="hljs-string">&#x27;name&#x27;</span>: item[<span class="hljs-string">&#x27;name&#x27;</span>]<br>        &#125;, &#123;<br>            <span class="hljs-string">&#x27;$set&#x27;</span>: <span class="hljs-built_in">dict</span>(item)<br>        &#125;, <span class="hljs-literal">True</span>)<br>        <span class="hljs-keyword">return</span> item<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">close_spider</span>(<span class="hljs-params">self, spider</span>):<br>        self.client.close()<br><br><span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> Request<br><span class="hljs-keyword">from</span> scrapy.exceptions <span class="hljs-keyword">import</span> DropItem<br><span class="hljs-keyword">from</span> scrapy.pipelines.images <span class="hljs-keyword">import</span> ImagesPipeline<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ImagePipeline</span>(<span class="hljs-title class_ inherited__">ImagesPipeline</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">file_path</span>(<span class="hljs-params">self, request, response=<span class="hljs-literal">None</span>, info=<span class="hljs-literal">None</span></span>):<br>        movie = request.meta[<span class="hljs-string">&#x27;movie&#x27;</span>]<br>        <span class="hljs-built_in">type</span> = request.meta[<span class="hljs-string">&#x27;type&#x27;</span>]<br>        name = request.meta[<span class="hljs-string">&#x27;name&#x27;</span>]<br>        file_name = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;movie&#125;</span>/<span class="hljs-subst">&#123;<span class="hljs-built_in">type</span>&#125;</span>/<span class="hljs-subst">&#123;name&#125;</span>.jpg&#x27;</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;filename&quot;</span>)<br>        <span class="hljs-keyword">return</span> file_name<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">item_completed</span>(<span class="hljs-params">self, results, item, info</span>):<br>        image_paths = [x[<span class="hljs-string">&#x27;path&#x27;</span>] <span class="hljs-keyword">for</span> ok, x <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> ok]<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> image_paths:<br>            <span class="hljs-keyword">raise</span> DropItem(<span class="hljs-string">&#x27;Image Downloaded Failed&#x27;</span>)<br>        <span class="hljs-keyword">return</span> item<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_media_requests</span>(<span class="hljs-params">self, item, info</span>):<br>        <span class="hljs-keyword">for</span> director <span class="hljs-keyword">in</span> item[<span class="hljs-string">&#x27;directors&#x27;</span>]:<br>            director_name = director[<span class="hljs-string">&#x27;name&#x27;</span>]<br>            director_image = director[<span class="hljs-string">&#x27;image&#x27;</span>]<br>            <span class="hljs-keyword">yield</span> Request(director_image, meta=&#123;<br>                <span class="hljs-string">&#x27;name&#x27;</span>: director_name,<br>                <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;director&#x27;</span>,<br>                <span class="hljs-string">&#x27;movie&#x27;</span>: item[<span class="hljs-string">&#x27;name&#x27;</span>]<br>            &#125;)<br>        <br>        <span class="hljs-keyword">for</span> actor <span class="hljs-keyword">in</span> item[<span class="hljs-string">&#x27;actors&#x27;</span>]:<br>            actor_name = actor[<span class="hljs-string">&#x27;name&#x27;</span>]<br>            actor_image = actor[<span class="hljs-string">&#x27;image&#x27;</span>]<br>            <span class="hljs-keyword">yield</span> Request(actor_image, meta=&#123;<br>                <span class="hljs-string">&#x27;name&#x27;</span>: actor_name,<br>                <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;actor&#x27;</span>,<br>                <span class="hljs-string">&#x27;movie&#x27;</span>: item[<span class="hljs-string">&#x27;name&#x27;</span>]<br>            &#125;)<br></code></pre></td></tr></table></figure>
+
+<p>setting</p>
+<p>设置优先级和部分参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">ITEM_PIPELINES = &#123;<br>    <span class="hljs-string">&#x27;scrapyitempipelinedemo.pipelines.ImagePipeline&#x27;</span>: <span class="hljs-number">300</span>,<br>    <span class="hljs-string">&#x27;scrapyitempipelinedemo.pipelines.MongoDBPipeline&#x27;</span>: <span class="hljs-number">301</span><br>    <span class="hljs-comment"># &#x27;scrapyitempipelinedemo.pipelines.ElasticsearchPipeline&#x27;: 302,</span><br>&#125;<br><br>MONGODB_CONNECTION_STRING = <span class="hljs-string">&quot;10.182.61.118&quot;</span><br>MONGODB_DATABASE = <span class="hljs-string">&quot;movies&quot;</span><br>MONGODB_COLLECTION = <span class="hljs-string">&quot;movies&quot;</span><br><br><br>IMAGES_STORE = <span class="hljs-string">&#x27;./images&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="Extension"><a href="#Extension" class="headerlink" title="Extension"></a>Extension</h2><p>自定义添加和扩展部分功能，如：</p>
+<ul>
+<li><p>LogStats：记录基本爬取信息</p>
+</li>
+<li><p>CoreStats：统计爬取的核心统计信息</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/extensions.html">https://docs.scrapy.org/en/latest/topics/extensions.html</a></p>
+<p>通过settings.py控制启用</p>
+<p>实现自定义Extension：</p>
+<ul>
+<li>实现一个Python类，然后实现对应的处理方法，如实现一个 spider_opened方法用于处理Spider开始爬取时执行的操作，可以接收一个spider参数并对其进行操作。</li>
+<li>定义from_crawler类方法，其第一个参数是cls类对象，第二个参数是crawler。利用crawler的signals对象将Scrapy的各个信号和已经定义的处理方法关联起来。</li>
+</ul>
+<h3 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a>举例</h3><p>新建extension.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> signals<br><br><br>NOTIFICATION_URL = <span class="hljs-string">&#x27;http://localhost:5000/notify&#x27;</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">NotificationExtension</span>(<span class="hljs-title class_ inherited__">object</span>):<br><br><span class="hljs-meta">    @classmethod</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">from_crawler</span>(<span class="hljs-params">cls, crawler</span>): <span class="hljs-comment">#将其他方法与对应的Scrapy信号关联</span><br>        ext = cls()<br>        crawler.signals.connect(<br>            ext.spider_opened, signal=signals.spider_opened)<br>        crawler.signals.connect(<br>            ext.spider_closed, signal=signals.spider_closed)<br>        crawler.signals.connect(ext.item_scraped, signal=signals.item_scraped)<br>        <span class="hljs-keyword">return</span> ext<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">spider_opened</span>(<span class="hljs-params">self, spider</span>):<br>        requests.post(NOTIFICATION_URL, json=&#123;<br>            <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;SPIDER_OPENED&#x27;</span>,<br>            <span class="hljs-string">&#x27;data&#x27;</span>: &#123;<br>                <span class="hljs-string">&#x27;spider_name&#x27;</span>: spider.name<br>            &#125;<br>        &#125;)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">spider_closed</span>(<span class="hljs-params">self, spider</span>):<br>        requests.post(NOTIFICATION_URL, json=&#123;<br>            <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;SPIDER_OPENED&#x27;</span>,<br>            <span class="hljs-string">&#x27;data&#x27;</span>: &#123;<br>                <span class="hljs-string">&#x27;spider_name&#x27;</span>: spider.name<br>            &#125;<br>        &#125;)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">item_scraped</span>(<span class="hljs-params">self, item, spider</span>):<br>        requests.post(NOTIFICATION_URL, json=&#123;<br>            <span class="hljs-string">&#x27;event&#x27;</span>: <span class="hljs-string">&#x27;ITEM_SCRAPED&#x27;</span>,<br>            <span class="hljs-string">&#x27;data&#x27;</span>: &#123;<br>                <span class="hljs-string">&#x27;spider_name&#x27;</span>: spider.name,<br>                <span class="hljs-string">&#x27;item&#x27;</span>: <span class="hljs-built_in">dict</span>(item)<br>            &#125;<br>        &#125;)<br></code></pre></td></tr></table></figure>
+
+<p>设置完成之后在settings.py修改优先级，如100</p>
+<h2 id="Scrapy对接Selenuim"><a href="#Scrapy对接Selenuim" class="headerlink" title="Scrapy对接Selenuim"></a>Scrapy对接Selenuim</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>Downloader Middleware的process_request方法中，当返回为Response对象时，更低优先级的Downloader Middleware的process_request和 process_exception方法不会被继续调用，每个Downloader Middleware的process_response方法转而被依次调用。调用完之后直接将Response对象发送给Spider来处理。</p>
+<p>即返回Response对象后，process_request接收的Request对象不传给Spider处理，而是由process_response方法处理，Spider只解析结果。</p>
+<h3 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a>举例</h3><p>spider</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BookSpider</span>(<span class="hljs-title class_ inherited__">Spider</span>):<br>    name = <span class="hljs-string">&#x27;book2&#x27;</span><br>    allowed_domains = [<span class="hljs-string">&#x27;spa5.scrape.center&#x27;</span>]<br>    base_url = <span class="hljs-string">&#x27;https://spa5.scrape.center&#x27;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start_requests</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        first page</span><br><span class="hljs-string">        :return:</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        start_url = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;self.base_url&#125;</span>/page/1&#x27;</span><br>        logger.info(<span class="hljs-string">&#x27;crawling %s&#x27;</span>, start_url)<br>        <span class="hljs-keyword">yield</span> Request(start_url, callback=self.parse_index)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_index</span>(<span class="hljs-params">self, response</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        extract books and get next page</span><br><span class="hljs-string">        :param response:</span><br><span class="hljs-string">        :return:</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        items = response.css(<span class="hljs-string">&#x27;.item&#x27;</span>)<br>        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> items:<br>            href = item.css(<span class="hljs-string">&#x27;.top a::attr(href)&#x27;</span>).extract_first()<br>            detail_url = response.urljoin(href)<br>            <span class="hljs-keyword">yield</span> Request(detail_url, callback=self.parse_detail, priority=<span class="hljs-number">2</span>)<br><br>        <span class="hljs-comment"># next page</span><br>        <span class="hljs-keyword">match</span> = re.search(<span class="hljs-string">r&#x27;page/(\d+)&#x27;</span>, response.url)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">match</span>:<br>            <span class="hljs-keyword">return</span><br>        page = <span class="hljs-built_in">int</span>(<span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>)) + <span class="hljs-number">1</span><br>        next_url = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;self.base_url&#125;</span>/page/<span class="hljs-subst">&#123;page&#125;</span>&#x27;</span><br>        <span class="hljs-keyword">yield</span> Request(next_url, callback=self.parse_index)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_detail</span>(<span class="hljs-params">self, response</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        process detail info of book</span><br><span class="hljs-string">        :param response:</span><br><span class="hljs-string">        :return:</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        name = response.css(<span class="hljs-string">&#x27;.name::text&#x27;</span>).extract_first()<br>        tags = response.css(<span class="hljs-string">&#x27;.tags button span::text&#x27;</span>).extract()<br>        score = response.css(<span class="hljs-string">&#x27;.score::text&#x27;</span>).extract_first()<br>        price = response.css(<span class="hljs-string">&#x27;.price span::text&#x27;</span>).extract_first()<br>        cover = response.css(<span class="hljs-string">&#x27;.cover::attr(src)&#x27;</span>).extract_first()<br>        tags = [tag.strip() <span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> tags] <span class="hljs-keyword">if</span> tags <span class="hljs-keyword">else</span> []<br>        score = score.strip() <span class="hljs-keyword">if</span> score <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br>        item = BookItem(name=name, tags=tags, score=score,<br>                        price=price, cover=cover)<br>        <span class="hljs-keyword">yield</span> item<br></code></pre></td></tr></table></figure>
+
+<p>item</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy.item <span class="hljs-keyword">import</span> Item,Field<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BookItem</span>(<span class="hljs-title class_ inherited__">Item</span>):<br>    name = Field()<br>    tags = Field()<br>    score = Field()<br>    cover = Field()<br>    price = Field()<br></code></pre></td></tr></table></figure>
+
+<p>middlewares</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itemadapter <span class="hljs-keyword">import</span> is_item, ItemAdapter<br><span class="hljs-keyword">from</span> scrapy.http <span class="hljs-keyword">import</span> HtmlResponse<br><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">import</span> time<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SeleniumMiddleware</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_request</span>(<span class="hljs-params">self, request, spider</span>):<br>        url = request.url<br>        browser = webdriver.Chrome()<br>        browser.get(url)<br>        time.sleep(<span class="hljs-number">5</span>)<br>        html = browser.page_source<br>        browser.close()<br>        <span class="hljs-keyword">return</span> HtmlResponse(url=request.url,<br>                            body=html,<br>                            request=request,<br>                            encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>                            status=<span class="hljs-number">200</span>)<br></code></pre></td></tr></table></figure>
+
+<p>settings</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">DOWNLOADER_MIDDLEWARES = &#123;<br>    <span class="hljs-string">&#x27;gerapy_selenium.downloadermiddlewares.SeleniumMiddleware&#x27;</span>: <span class="hljs-number">543</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="GerapySelenium"><a href="#GerapySelenium" class="headerlink" title="GerapySelenium"></a>GerapySelenium</h3><p><a target="_blank" rel="noopener" href="https://github.com/Gerapy/GerapySelenium">https://github.com/Gerapy/GerapySelenium</a></p>
+<p>scrapy的selenium支持包</p>
+<p>安装</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip3 <span class="hljs-keyword">install</span> gerapy-selenium<br></code></pre></td></tr></table></figure>
+
+<p><strong>使用</strong></p>
+<p>在Downloader Middleware和Spider中将Request改为SelenuimRequest</p>
+<p>设置代理可以在Spider的SelenuimRequest中添加proxy参数</p>
+<p>wait_for参数可以等待某个指定节点加载出</p>
+<p>如<code>yield SeleniumRequest(start_url, callback=self.parse_index,wait_for=&#39;.item .name&#39; , proxy=&#39;127.0.0.1:7890&#39;)</code></p>
+<p>setting相关配置举例</p>
+<ul>
+<li>GREAPY_SELENIUM_HEADLESS &#x3D; True #无头模式</li>
+<li>GREAPY_SELENIUM_IGNORE_HTTPS_ERRORS &#x3D; True #忽略https错误</li>
+<li>GREAPY_SELENIUM_PRETEND &#x3D; Fasle #webdriver反屏蔽</li>
+<li>GREAPY_SELENIUM_DOWNLOAD_TIMEOUT &#x3D; 60 #超时时间</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Scarpy基本使用</div>
+      <div>http://example.com/2022/11/26/Scarpy基本使用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ICEY_</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/27/python%E5%AE%89%E5%85%A8%E7%BC%96%E7%A8%8B/" title="python安全编程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python安全编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/26/%E6%B5%8B%E8%AF%952/" title="测试2">
+                        <span class="hidden-mobile">测试2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"5FdBjnotIqOnpIO6T8lUqHtK-gzGzoHsz","appKey":"kJ3ijUBar7irF5XDBotw8Gqu","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
