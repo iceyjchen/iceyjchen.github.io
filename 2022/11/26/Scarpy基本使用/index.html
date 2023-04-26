@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="ICEY">
 <meta property="og:description" content="基础介绍架构  Engine:图中最中间的部分，中文可以称为引擎，用来处理整个系统的数据流和事件，是整个框架的核心，可以理解为整个框架的中央处理器，负责数据的流转和逻辑的处理。Item:它是一个抽象的数据结构，所以图中没有体现出来，它定义了爬取结果的数据结构，爬取的数据会被赋值成Item对象。每个Iltem就是一个类，类里面定义了爬取结果的数据字段，可以理解为它用来规定爬取数据的存储格式。°Sch">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/.com//11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png">
+<meta property="og:image" content="http://example.com/2022/11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png">
 <meta property="article:published_time" content="2022-11-26T14:33:01.000Z">
-<meta property="article:modified_time" content="2022-11-26T14:37:17.701Z">
+<meta property="article:modified_time" content="2022-11-26T14:37:17.000Z">
 <meta property="article:author" content="ICEY_">
 <meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/.com//11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png">
+<meta name="twitter:image" content="http://example.com/2022/11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png">
   
   
   
@@ -308,7 +308,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h2><h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><img src="/.com//11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png" srcset="/img/loading.gif" lazyload class title="img">
+                <h2 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h2><h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><img src="/2022/11/26/Scarpy%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/20180502174530976.png" srcset="/img/loading.gif" lazyload class="" title="img">
 
 <p>Engine:图中最中间的部分，中文可以称为引擎，用来处理整个系统的数据流和事件，是整个框架的核心，可以理解为整个框架的中央处理器，负责数据的流转和逻辑的处理。<br>Item:它是一个抽象的数据结构，所以图中没有体现出来，它定义了爬取结果的数据结构，爬取的数据会被赋值成Item对象。每个Iltem就是一个类，类里面定义了爬取结果的数据字段，可以理解为它用来规定爬取数据的存储格式。°<br>Scheduler:图中下方的部分，中文可以称为调度器，它用来接受Engine发过来的Request 并将其加入队列中，同时也可以将 Request 发回给Engine供 Downloader执行，它主要维护Request的调度逻辑，比如先进先出、先进后出、优先级进出等等。<br>Spiders:图中上方的部分,中文可以称为蜘蛛,Spiders是一个复数统称,其可以对应多个Spider,每个Spider 里面定义了站点的爬取逻辑和页面的解析规则，它主要负责解析响应并生成Item和新的请求然后发给Engine进行处理。<br>Downloader:图中右侧部分，中文可以称为下载器，即完成“向服务器发送请求，然后拿到响应”的过程,得到的响应会再发送给Engine处理。<br>Item Pipelines:图中左侧部分，中文可以称为项目管道，这也是一个复数统称，可以对应多个Item Pipeline。Item Pipeline主要负责处理由Spider 从页面中抽取的 Item，做一些数据清洗、验证和存储等工作，比如将Item的某些字段进行规整，将Item存储到数据库等操作都可以由Item Pipeline来完成。<br>Downloader Middlewares:图中 Engine和 Downloader 之间的方块部分，中文可以称为下载器中间件，同样这也是复数统称，其包含多个Downloader Middleware，它是位于 Engine和Downloader之间的Hook框架,负责实现Downloader和 Engine之间的请求和响应的处理过程。</p>
 <p>Spider Middlewares:图中 Engine和Spiders之间的方块部分，中文可以称为蜘蛛中间件，它是位于Engine和 Spiders之间的Hook框架，负责实现Spiders 和 Engine之间的Item.<br>请求和响应的处理过程。</p>
